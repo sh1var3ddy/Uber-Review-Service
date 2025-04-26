@@ -1,0 +1,9 @@
+one to one, many to one default fetching mode is eager
+
+many to many,one to many default fetching mode is lazy
+
+when you use @Query(nativeQuery=true) then the sql query should have the exact column names as in table violating this will lead to
+runtime error not compile time error.
+
+when you use @Query(nativeQuery=false) then the hibernate query should have the exact variable names as in model, violating this will lead to
+compilation error this is easy to check rather than raw sql queries.
