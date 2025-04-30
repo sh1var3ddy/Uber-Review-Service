@@ -7,3 +7,10 @@ runtime error not compile time error.
 
 when you use @Query(nativeQuery=false) then the hibernate query should have the exact variable names as in model, violating this will lead to
 compilation error this is easy to check rather than raw sql queries.
+
+The @Transactional annotation in Spring should be used on methods that perform a unit of work involving one or more
+database operations that must be completed as a single transaction—i.e., all operations succeed or all fail (rolled back).
+Layer	    Use @Transactional?     	Why
+Service	    ✅ Yes (best place)      	Groups business logic, ensures atomicity
+Repository	❌ Usually not needed	    Handled automatically by Spring Data JPA
+Controller	❌ No	                    Should not contain transactional logic
