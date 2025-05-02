@@ -1,46 +1,22 @@
 package com.example.UberReviewService.Services;
 
-import com.example.UberReviewService.models.Booking;
-import com.example.UberReviewService.models.Driver;
-import com.example.UberReviewService.repositories.BookingRepository;
-import com.example.UberReviewService.repositories.DriverRepository;
-import com.example.UberReviewService.repositories.ReviewRepository;
-import jakarta.transaction.Transactional;
-import org.springframework.boot.CommandLineRunner;
+import com.example.UberReviewService.models.Review;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ReviewService implements CommandLineRunner {
+public interface ReviewService {
 
-    private final ReviewRepository reviewRepository;
-    private final BookingRepository bookingRepository;
-    private final DriverRepository driverRepository;
-    public ReviewService(ReviewRepository reviewRepository, BookingRepository bookingRepository,DriverRepository driverRepository){
-        this.reviewRepository = reviewRepository;
-        this.bookingRepository = bookingRepository;
-        this.driverRepository = driverRepository;
-    }
+    public Optional<Review> findReviewById(Long id);
 
-    @Override
-    @Transactional
-    public void run(String... args) throws Exception {
+    public List<Review> findAllReviews();
 
-        List<Long> driverIds = new ArrayList<Long>(Arrays.asList(1L, 2L,3L,4L));
+    public boolean deleteReviewById(Long id);
 
-        List<Driver> drivers = driverRepository.findAllByIdIn(driverIds);
+    public Review publishReview(Review review);
 
-//        List<Booking> bookings = bookingRepository.findAllByDriverIn(drivers);
+    public Review updateReview(Long id, Review review);
 
-        for(Driver driver:drivers){
-            List<Booking> bookings = driver.getBookings();
-            for(Booking booking:bookings){
-                System.out.println(booking.getId());
-            }
-        }
-
-
-
-    }
 }
