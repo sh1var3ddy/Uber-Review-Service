@@ -13,11 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class Booking extends BaseModel {
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-//    CascadeType.REMOVE will ensure deleting record from booking will delete the associated review from Review table
-    private Review driverReview;
-    // we have defined a one to one relation between booking and review
-
     @Enumerated(value= EnumType.STRING)
     private BookingStatus bookingStatus;
 

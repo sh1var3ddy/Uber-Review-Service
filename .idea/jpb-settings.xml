@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DatabaseMigrationSettings" lastSelectedDirectory="migration" />
+  <component name="JpaLiquibaseChangesConfig">
+    <exclude-change idName="driver#phone_number" tagName="addColumn" />
+    <exclude-change idName="driver#address" tagName="addColumn" />
+    <exclude-change idName="booking#driver_review_id" tagName="dropColumn" />
+    <exclude-change idName="booking#booking_status" tagName="addColumn" />
+    <exclude-change idName="booking#booking_status" tagName="dropColumn" />
+    <exclude-change idName="FK_REVIEW_ON_BOOKING" tagName="addForeignKeyConstraint" />
+    <exclude-change idName="review#booking_id" tagName="addColumn" />
+  </component>
 </project>
