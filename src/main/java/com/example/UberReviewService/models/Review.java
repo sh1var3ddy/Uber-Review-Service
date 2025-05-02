@@ -17,9 +17,8 @@ import lombok.*;
 public class Review extends BaseModel {
 
     @Column(nullable = false)
-    private String Content;
+    private String content;
 
-    private Double Rating;
-
+    private Double rating;
 
 }

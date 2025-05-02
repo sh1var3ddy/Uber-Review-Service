@@ -3,5 +3,7 @@
   <component name="DiffGenerationConfig">
     <option name="snapshotDb" value="false" />
     <option name="snapshotModelValue" value="UberReviewService.main:UberReviewService.main" />
+    <option name="sourceModelValue" value="UberReviewService.main:UberReviewService.main" />
+    <option name="targetDbValue" value="d21b3c28-f963-4a57-bf33-c399b4941c85" />
   </component>
 </project>
