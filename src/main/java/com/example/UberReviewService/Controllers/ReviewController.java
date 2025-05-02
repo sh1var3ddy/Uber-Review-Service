@@ -20,20 +20,20 @@ public class ReviewController {
 
     @PostMapping
     public ResponseEntity<Review> publishReview(@RequestBody Review review) {
-        Review reviewSaved = reviewService.publishReview(review);
+        Review reviewSaved = this.reviewService.publishReview(review);
         return new ResponseEntity<>(reviewSaved, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<Review>> getAllReviews() {
-        List<Review> reviews = reviewService.findAllReviews();
+        List<Review> reviews = this.reviewService.findAllReviews();
         return new ResponseEntity<>(reviews, HttpStatus.OK);
     }
 
     @GetMapping("/{reviewId}")
     public ResponseEntity<?> getReviewById(@PathVariable long reviewId) {
         try {
-            Optional<Review> review = reviewService.findReviewById(reviewId);
+            Optional<Review> review = this.reviewService.findReviewById(reviewId);
             if (review.isPresent()) {
                 return new ResponseEntity<>(review.get(), HttpStatus.OK);
             }
@@ -47,7 +47,7 @@ public class ReviewController {
     @DeleteMapping("/{reviewId}")
     public ResponseEntity<?> deleteReviewById(@PathVariable long reviewId) {
         try{
-            boolean success = reviewService.deleteReviewById(reviewId);
+            boolean success = this.reviewService.deleteReviewById(reviewId);
             if (success) {
                 return new ResponseEntity<>("Review deleted successfully",HttpStatus.OK);
             }
@@ -62,7 +62,7 @@ public class ReviewController {
     @PutMapping("/{reviewId}")
     public ResponseEntity<?> updateReviewById(@PathVariable long reviewId, @RequestBody Review review) {
         try{
-            Review newReview = reviewService.updateReview(reviewId,review);
+            Review newReview = this.reviewService.updateReview(reviewId,review);
             return new ResponseEntity<>(newReview, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
