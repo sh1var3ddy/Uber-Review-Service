@@ -21,7 +21,7 @@ public class Review extends BaseModel {
 
     private Double rating;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(nullable = false)
 //    CascadeType.REMOVE will ensure deleting record from booking will delete the associated review from Review table
     private Booking booking;
